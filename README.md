@@ -1,2 +1,2 @@
 # Tarun-Portfolio
-This is my portfolio and show my about,skills,projects or contact etc.
+ 🚀 Personal Portfolio showcasing my skills, projects, and contact details — built to share my journey as a B.Tech CSE student and future developer.
