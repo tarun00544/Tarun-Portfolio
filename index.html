@@ -721,7 +721,7 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
-                display: none;
+                display: none !important;
             }
 
             .mobile-menu {
@@ -758,6 +758,13 @@
             .logo {
                 font-size: 1.5rem;
             }
+
+            .mobile-nav-content a {
+                font-size: 1.2rem;
+                padding: 20px 40px;
+                width: 80%;
+                max-width: 300px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -786,6 +793,17 @@
             .logo {
                 font-size: 1.3rem;
             }
+
+            .mobile-nav-content a {
+                font-size: 1.1rem;
+                padding: 18px 30px;
+                width: 90%;
+                max-width: 280px;
+            }
+
+            .hero-title {
+                font-size: clamp(2.5rem, 10vw, 6rem);
+            }
         }
     </style>
 </head>
@@ -810,7 +828,7 @@
     <nav class="nav" id="navbar">
         <div class="nav-container">
             <div class="logo-container">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3onsErcDiptYJHciaInvsV-FEPLrAlmbX2A&s" alt="Tarun Kumar" class="profile-img">
+                <img src="https://imgcdn.stablediffusionweb.com/2024/10/17/7e7d0840-721f-4bd6-a823-668803318b7c.jpg" alt="Tarun Kumar" class="profile-img">
                 <a href="#" class="logo">TK</a>
             </div>
             <ul class="nav-links">
@@ -957,10 +975,9 @@
                     <li>Machine Learning</li>
                     <li>Blockchain</li>
                     <li>Internet of Things (IoT)</li>
-                    <li>Augmented Reality (AR)</li>
+                    <li>Cloud Computing</li>
                 </ul>
             </div>
-        </div>
     </section>
 
     <!-- Projects Section -->
