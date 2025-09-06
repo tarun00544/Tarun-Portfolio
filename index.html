@@ -122,6 +122,20 @@
             align-items: center;
         }
 
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            object-fit: cover;
+        }
+
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
@@ -168,6 +182,81 @@
         .nav-links a:hover {
             color: var(--primary);
             transform: translateY(-2px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--light);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .mobile-menu.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .mobile-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-nav-overlay.active {
+            transform: translateX(0);
+        }
+
+        .mobile-nav-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            gap: 2rem;
+        }
+
+        .mobile-nav-content a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 15px 30px;
+            border-radius: 50px;
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .mobile-nav-content a:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-5px);
         }
 
         /* Hero Section */
@@ -629,22 +718,6 @@
             transition: width 0.1s ease;
         }
 
-        /* Mobile Menu */
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: var(--light);
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -676,6 +749,15 @@
                 font-size: 0.8rem;
                 padding: 8px 16px;
             }
+
+            .profile-img {
+                width: 35px;
+                height: 35px;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -691,6 +773,19 @@
             .project-links {
                 flex-direction: column;
             }
+
+            .nav {
+                padding: 15px 20px;
+            }
+
+            .profile-img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
@@ -701,19 +796,30 @@
     <div class="orb orb-3"></div>
     <div class="scroll-progress" id="scrollProgress"></div>
 
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <div class="mobile-nav-content">
+            <a href="#about" onclick="closeMobileNav()">About</a>
+            <a href="#skills" onclick="closeMobileNav()">Skills</a>
+            <a href="#projects" onclick="closeMobileNav()">Projects</a>
+            <a href="#contact" onclick="closeMobileNav()">Contact</a>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="nav" id="navbar">
         <div class="nav-container">
-             
-            <a href="#" class="logo">TK</a>
-          
+            <div class="logo-container">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3onsErcDiptYJHciaInvsV-FEPLrAlmbX2A&s" alt="Tarun Kumar" class="profile-img">
+                <a href="#" class="logo">TK</a>
+            </div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="mobile-menu">
+            <div class="mobile-menu" id="mobileMenuBtn">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -729,7 +835,7 @@
                 Hi, I'm <span class="highlight">Tarun Kumar</span>
             </h1>
             <p class="hero-subtitle">
-                B.Tech CSE Student | Full Stack Developement
+                B.Tech CSE Student | Full Stack Development
             </p>
             <a href="#about" class="hero-cta">
                 <span>Explore My Work</span>
@@ -846,12 +952,12 @@
             
             <div class="skill-category">
                 <div class="skill-icon">🚀</div>
-                <div class="skill-name">Emerging Tech</div>
+                <div class="skill-name">Emerging Technologies</div>
                 <ul class="skill-list">
-                    <li>AR/VR Development</li>
-                    <li>3D Web Graphics</li>
-                    <li>Animation</li>
-                    <li>Interactive Design</li>
+                    <li>Machine Learning</li>
+                    <li>Blockchain</li>
+                    <li>Internet of Things (IoT)</li>
+                    <li>Augmented Reality (AR)</li>
                 </ul>
             </div>
         </div>
