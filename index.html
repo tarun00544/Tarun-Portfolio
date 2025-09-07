@@ -1412,14 +1412,20 @@
         setInterval(createFloatingParticle, 2000);
 
         // Mobile menu functionality
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
+  const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+  const mobileNavOverlay = document.getElementById("mobileNavOverlay");
 
-        if (mobileMenu && navLinks) {
-            mobileMenu.addEventListener('click', () => {
-                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            });
-        }
+  // hamburger click → overlay open/close
+  mobileMenuBtn.addEventListener("click", () => {
+    mobileNavOverlay.classList.toggle("active");
+  });
+
+  // link par click → overlay close
+  function closeMobileNav() {
+    mobileNavOverlay.classList.remove("active");
+  }
+ 
+
 
         // Add parallax effect to hero section
         window.addEventListener('scroll', () => {
