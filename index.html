@@ -30,6 +30,161 @@
             background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
             color: var(--dark);
             overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            background: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .navbar {
+            background: rgba(15, 23, 42, 0.95) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .nav-link {
+            color: #f1f5f9 !important;
+        }
+
+        body.dark-mode .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        body.dark-mode .card-custom,
+        body.dark-mode .project-card,
+        body.dark-mode .contact-form {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .card-title,
+        body.dark-mode .project-title,
+        body.dark-mode .section-title,
+        body.dark-mode .hero-title {
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .card-text,
+        body.dark-mode .project-desc,
+        body.dark-mode .section-subtitle,
+        body.dark-mode .hero-subtitle {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .skill-item {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .project-header {
+            background: rgba(15, 23, 42, 0.6);
+        }
+
+        body.dark-mode .form-control,
+        body.dark-mode .form-select {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .form-control::placeholder {
+            color: #64748b;
+        }
+
+        body.dark-mode .footer {
+            background: rgba(15, 23, 42, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+        }
+
+        body.dark-mode .social-link {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .hero-badge,
+        body.dark-mode .section-badge {
+            background: rgba(37, 99, 235, 0.2);
+            color: #60a5fa;
+        }
+
+        /* Theme Switch */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-switch {
+            display: inline-block;
+            height: 30px;
+            position: relative;
+            width: 60px;
+        }
+
+        .theme-switch input {
+            display: none;
+        }
+
+        .slider {
+            background-color: #cbd5e1;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            background-color: #ffffff;
+            bottom: 3px;
+            content: "";
+            height: 24px;
+            left: 3px;
+            position: absolute;
+            transition: 0.4s;
+            width: 24px;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        input:checked + .slider {
+            background-color: #2563eb;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+
+        .slider .icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            transition: opacity 0.3s;
+        }
+
+        .slider .sun {
+            left: 8px;
+            opacity: 1;
+        }
+
+        .slider .moon {
+            right: 8px;
+            opacity: 0;
+        }
+
+        input:checked + .slider .sun {
+            opacity: 0;
+        }
+
+        input:checked + .slider .moon {
+            opacity: 1;
         }
 
         /* Navbar */
@@ -258,6 +413,10 @@
             transform: translateY(-3px);
         }
 
+        .skill-item img {
+            border-radius: 10px;
+        }
+
         /* Projects */
         .project-card {
             background: white;
@@ -283,12 +442,10 @@
             align-items: center;
             min-height: 150px;
         }
-
         .project-icon img {
-            width: 80px;
-            height: 80px;
+            max-width: 100px;
+            max-height: 100px;
             object-fit: contain;
-            border-radius: 10px;
         }
 
         .project-body {
@@ -435,7 +592,19 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">TK</a>
+            <div class="d-flex align-items-center gap-3">
+                <a class="navbar-brand" href="#">TK</a>
+                <!-- Dark Mode Toggle Switch -->
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round">
+                            <span class="icon sun">☀️</span>
+                            <span class="icon moon">🌙</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -505,7 +674,7 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
+     <!-- Skills Section -->
     <section class="section" id="skills">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
@@ -519,7 +688,7 @@
                 <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968267.png" alt="html" height="50px"></div>
                 <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968242.png" alt="css" height="50px"></div>
                 <div class="skill-item"><img src="https://cdn3d.iconscout.com/3d/premium/thumb/ui-ux-3d-icon-png-download-11780142.png" alt="uiux" height="50px"></div>
-                <div class="skill-item"><img src="https://images.seeklogo.com/logo-png/33/1/python-logo-png_seeklogo-332789.png" alt="python" height="50px"></div>
+                <div class="skill-item"><img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBdGJUTfYBgXhsADa1SnJ3QcSnbaQCv2IguQ&s" alt="python" height="50px"></div>
                 <div class="skill-item"><img src="https://cdn.iconscout.com/icon/free/png-256/free-javascript-logo-icon-svg-download-png-1720087.png" alt="js" height="50px"></div>
                 <div class="skill-item"><img src="https://raw.githubusercontent.com/themedotid/bootstrap-icon/HEAD/docs/bootstrap-icon-css.png" alt="bootstrap" height="50px"></div>
                 <div class="skill-item"><img src="https://www.shutterstock.com/shutterstock/photos/1893066034/display_1500/stock-vector-dsa-mean-digital-signature-algorithm-it-security-acronyms-letters-and-icons-vector-illustration-1893066034.jpg" alt="dsa" height="50px"></div>
@@ -527,13 +696,14 @@
                 <div class="skill-item"><img src="https://img.freepik.com/premium-vector/blockchain-logo-design_611243-62.jpg?semt=ais_hybrid&w=740&q=80" alt="blockchain" height="50px"></div>
                 <div class="skill-item"><img src="https://media.istockphoto.com/id/1058712430/vector/simple-icon-to-represent-the-internet-of-things-concept-gear-settings-and-network-iot.jpg?s=612x612&w=0&k=20&c=FHm6JFVDYBAx62wBOP60EQUVhepsBjzpaRARLAxvsOM=" alt="iot" height="50px"></div>
                 <div class="skill-item"><img src="https://cdn.vectorstock.com/i/1000v/06/02/teamwork-support-icon-vector-10080602.jpg" alt="teamwork" height="50px"></div>
-                <div class="skill-item"><img src="https://c8.alamy.com/comp/2G4DGFF/leadership-icon-monochrome-simple-element-from-personal-growth-collection-creative-leadership-icon-for-web-design-templates-infographics-and-more-2G4DGFF.jpg" alt="leadership" height="50px"></div>
+                <div class="skill-item"><img src=" https://howwelead.org/wp-content/uploads/2016/08/bigstock-leader-leadership-skill-author-122245793.jpg" alt="leadership" height="50px"></div>
             </div>
         </div>
     </section>
 
+
     <!-- Projects Section -->
-    <section class="section" id="projects">
+     <section class="section" id="projects">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <div class="section-badge">🚀 My Work</div>
@@ -544,7 +714,7 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-card">
                         <div class="project-header">
-                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwd3m4kzrCulHiBUOzm_0EZLs0g66HkX05ag&s" alt="movie hub"></div>
+                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwd3m4kzrCulHiBUOzm_0EZLs0g66HkX05ag&s" alt="movie hub" height="80px" width="80px"></div>
                         </div>
                         <div class="project-body">
                             <h3 class="project-title">Movie Hub</h3>
@@ -559,7 +729,7 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-card">
                         <div class="project-header">
-                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFwD6wsvFB8VKZTeFoNxcyxPhhrHP-1nt4ZQ&s" alt="food express"></div>
+                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFwD6wsvFB8VKZTeFoNxcyxPhhrHP-1nt4ZQ&s" alt="food express" height="80px" width="80px"></div>
                         </div>
                         <div class="project-body">
                             <h3 class="project-title">Food Express</h3>
@@ -571,92 +741,80 @@
                     </div>
                 </div>
                
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon"><img src="https://c8.alamy.com/comp/G2FWK6/drum-kit-icon-G2FWK6.jpg" alt="drum kit"></div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">Drum Kit</h3>
-                            <p class="project-desc">A simple and fun Drum Kit. Press keys on your keyboard and mobile screen to play 8 different drum sounds.</p>
-                            <a href="https://drum-kit-three-tau.vercel.app/" target="_blank" class="project-link">
-                                Play Now <span>→</span>
-                            </a>
-                        </div>
-                    </div>
+                 <div class="col-lg-4 col-md-6" data-aos="fada-up" data-aos-delay="200">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon"> <img src="https://c8.alamy.com/comp/G2FWK6/drum-kit-icon-G2FWK6.jpg" alt="drum kit" height="80px" width="80px"> </div>
                 </div>
+                    <div class="project-body">
+                    <h3 class="project-title">Drum Kit</h3>
+                    <p class="project-desc">A simple and fun Drum Kit Press keys A, S, D, F, G, H, J, K on your keyboard and also mobile screen to play 8 different drum sounds.</p>
+                    <a href="https://drum-kit-three-tau.vercel.app/" target="_blank" class="project-link">
+                        Play now <span>↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
 
+          <div class="col-lg-4 col-md-6" data-aos="fada-up" data-aos-delay="200">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRie_lxbIM-D21yMA08OhpnGtVsPmc_XxS74A&s" alt="..." height="80px" width="80px"> </div>
+                     </div>
+                    <div class="project-body">
+                    <h3 class="project-title">Indian-Cultural-Heritage</h3>
+                    <p class="project-desc">A clean, simple website highlighting India’s monuments, festivals, arts, and traditions in one visual experience.</p>
+                    <a href="https://indian-cultural-heritage.vercel.app/" target="_blank" class="project-link">
+                       view now <span>↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+         
+        <div class="col-lg-4 col-md-6" data-aos="fada-up" data-aos-delay="200">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon"> <img src="https://i.pinimg.com/736x/5e/74/ec/5e74ec29fcf66a8b539f3e80a80042b1.jpg" alt="..." height="80px" width="80px"> </div>
+                     </div>
+                    <div class="project-body">
+                    <h3 class="project-title">EcoSmart Pro</h3>
+                    <p class="project-desc">A smart, eco-friendly web solution designed to help users cut electricity waste and improve energy efficiency.</p>
+                    <a href="https://smart-energy-saver-tan.vercel.app/" target="_blank" class="project-link">
+                       view now <span>↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+         
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-card">
                         <div class="project-header">
-                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRie_lxbIM-D21yMA08OhpnGtVsPmc_XxS74A&s" alt="indian culture"></div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">Indian Cultural Heritage</h3>
-                            <p class="project-desc">A clean, simple website highlighting India's monuments, festivals, arts, and traditions.</p>
-                            <a href="https://indian-cultural-heritage.vercel.app/" target="_blank" class="project-link">
-                                View Now <span>→</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-         
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon"><img src="https://i.pinimg.com/736x/5e/74/ec/5e74ec29fcf66a8b539f3e80a80042b1.jpg" alt="ecosmart"></div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">EcoSmart Pro</h3>
-                            <p class="project-desc">A smart, eco-friendly web solution to help users cut electricity waste and improve energy efficiency.</p>
-                            <a href="https://smart-energy-saver-tan.vercel.app/" target="_blank" class="project-link">
-                                View Now <span>→</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-         
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon"><img src="https://img.freepik.com/premium-psd/3d-futuristic-smart-calculator-icon-with-advanced-ai-technology_653681-5232.jpg" alt="calculator"></div>
+                            <div class="project-icon"><img src="https://img.freepik.com/premium-psd/3d-futuristic-smart-calculator-icon-with-advanced-ai-technology_653681-5232.jpg" alt="calculator" height="80px" width="80px"></div>
                         </div>
                         <div class="project-body">
                             <h3 class="project-title">SolveMate AI</h3>
                             <p class="project-desc">Advanced calculator with modern UI and smooth animations.</p>
                             <a href="https://ai-calculator-bay.vercel.app/" target="_blank" class="project-link">
-                                Try Now <span>→</span>
+                                Try NOw <span>→</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-card">
                         <div class="project-header">
-                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5tKammRppBQaIRxt9v714nGHtVPUH9JQ8pQ&s" alt="vr"></div>
+                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5tKammRppBQaIRxt9v714nGHtVPUH9JQ8pQ&s" alt="project" height="80px" width="80px"></div>
                         </div>
                         <div class="project-body">
                             <h3 class="project-title">360° VR Experience</h3>
                             <p class="project-desc">Immersive 360-degree image viewer with advanced JavaScript.</p>
                             <a href="https://tarun00544.github.io/AR-VR-3D/" target="_blank" class="project-link">
                                 View Live <span>→</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwyyhb3FPkhzx22mIfmg5b26XmHZwwzeohrWPljoIT30po4bmf9fzqIe95biiitIDGGeo&usqp=CAU" alt="game"></div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">Rock Paper Scissors</h3>
-                            <p class="project-desc">Interactive game with real-time score tracking and animations.</p>
-                            <a href="https://rock-paper-scissors-xi-sage.vercel.app/" target="_blank" class="project-link">
-                                Play Now <span>→</span>
-                            </a>
+                            </a> <br>
+                            <a href="https://hostel-vr.vercel.app/" target="_blank" class="project-link">
+                        view Live <span>→</span>
+                    </a>
                         </div>
                     </div>
                 </div>
@@ -664,7 +822,22 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="project-card">
                         <div class="project-header">
-                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUwXwRZJZhR3USqUT-tfSz0uMACOMaEoU5A&s" alt="portal"></div>
+                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwyyhb3FPkhzx22mIfmg5b26XmHZwwzeohrWPljoIT30po4bmf9fzqIe95biiitIDGGeo&usqp=CAU" alt="game" height="80px" width="80px"></div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Rock Paper Scissors</h3>
+                            <p class="project-desc">Interactive game with real-time score tracking and animations.</p>
+                            <a href="https://rock-paper-scissors-xi-sage.vercel.app/" target="_blank" class="project-link">
+                                Play Now<span>→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUwXwRZJZhR3USqUT-tfSz0uMACOMaEoU5A&s" alt="portal" height="80px" width="80px"></div>
                         </div>
                         <div class="project-body">
                             <h3 class="project-title">Registration Portal</h3>
@@ -678,67 +851,67 @@
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFkMTRJRUnyy8yUVMGKRj4ES-hJokE-o0Ozw&s" alt="atm"></div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">ATM System</h3>
-                            <p class="project-desc">A realistic ATM machine simulation with secure authentication and transaction processing.</p>
-                            <a href="https://atm-machine-zeta.vercel.app/" target="_blank" class="project-link">
-                                Try ATM <span>→</span>
-                            </a>
-                        </div>
+                         <div class="project-header">
+                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFkMTRJRUnyy8yUVMGKRj4ES-hJokE-o0Ozw&s" alt="atm" height="80px" width="80px"></div>
+                         </div>
+                         <div class="project-body">
+                          <h3 class="project-title">ATM System</h3>
+                          <p class="project-desc">A realistic ATM machine simulation with secure authentication, transaction processing, and balance management.</p>
+                          <a href="https://atm-machine-zeta.vercel.app/" target="_blank" class="project-link">
+                           Try ATM <span>↗</span>
+                          </a>
                     </div>
+                 </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTJ37lVccLa3CW3pksSHwq5FqxQKmzD90KTg&s" alt="account"></div>
-                        </div>
-                        <div class="project-body">
+                       <div class="project-header">
+                          <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTJ37lVccLa3CW3pksSHwq5FqxQKmzD90KTg&s" alt="account" height="80px" width="80px"></div>
+                            </div>
+                            <div class="project-body">
                             <h3 class="project-title">Account Management System</h3>
-                            <p class="project-desc">A basic Account Management System with user authentication and balance check.</p>
-                            <a href="https://account-management-omega.vercel.app/" target="_blank" class="project-link">
-                                Try Now <span>→</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                            <p class="project-desc">A basic Account Management System with user authentication, deposit, withdrawal, and balance check balance.</p>
+                            <a href="https://account-management-omega.vercel.app/" target="_blank"  class="project-link">
+                           Try Now<span>↗</span>
+                        </a>
+                     </div>
+                 </div>
+            </div>
 
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon"><img src="https://cdn-icons-png.flaticon.com/512/3966/3966442.png" alt="login"></div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">Login Page</h3>
-                            <p class="project-desc">A sleek login page with modern design, featuring email and password fields.</p>
-                            <a href="https://loginpage-web-wine.vercel.app/" target="_blank" class="project-link">
-                                Login Now <span>→</span>
-                            </a>
-                        </div>
-                    </div>
+    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+      <div class="project-card">
+           <div class="project-header">
+               <div class="project-icon"><img src="https://cdn-icons-png.flaticon.com/512/3966/3966442.png" alt="login page" height="80px" width="80px"></div>
                 </div>
+                  <div class="project-body">
+                   <h3 class="project-title">Login page</h3>
+                   <p class="project-desc">A sleek login page with modern design, featuring email and password fields, remember me option, and links for password recovery and sign-up. <br>
+                    email: "tarunkumar894186@gmail.com", <br>
+                     password: "Tarun@1230"</p>
+                  <a href="https://loginpage-web-wine.vercel.app/" target="_blank" class="project-link">
+                    Login Now  <span>↗</span>
+                 </a>
+            </div>
+          </div>
+       </div>
 
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon"><img src="https://cdn-icons-png.flaticon.com/512/7840/7840459.png" alt="resume"></div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">My Resume</h3>
-                            <p class="project-desc">A comprehensive resume showcasing my skills, projects, and experiences in a professional format.</p>
-                            <a href="https://tarun00544.github.io/My-resume/" target="_blank" class="project-link">
-                                Visit Now <span>→</span>
-                            </a>
-                        </div>
-                    </div>
+    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card">
+            <div class="project-header">
+                <div class="project-icon"><img src="https://cdn-icons-png.flaticon.com/512/7840/7840459.png" alt="resume" height="80px" width="80px"></div>
+                 </div>
+                     <div class="project-body">
+                         <h3 class="project-title">My Resume</h3>
+                         <p class="project-desc">A comprehensive resume showcasing my skills, projects, and experiences in a professional format.</p>
+                       <a href=" https://tarun00544.github.io/My-resume/" target="_blank" class="project-link">
+                       Visit Now <span>↗</span>
+                     </a>
                 </div>
             </div>
         </div>
+     </div>
     </section>
-
     <!-- Contact Section -->
     <section class="section" id="contact">
         <div class="container">
@@ -824,6 +997,29 @@
             once: true,
             offset: 50
         });
+
+        // Dark Mode Toggle
+        const toggleSwitch = document.querySelector('#checkbox');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme) {
+            document.body.classList.add(currentTheme);
+            if (currentTheme === 'dark-mode') {
+                toggleSwitch.checked = true;
+            }
+        }
+
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light-mode');
+            }
+        }
+
+        toggleSwitch.addEventListener('change', switchTheme, false);
 
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
