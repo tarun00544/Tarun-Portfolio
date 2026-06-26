@@ -1,0 +1,1074 @@
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarun Kumar | Full Stack Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #3b82f6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+            color: var(--dark);
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            background: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .navbar {
+            background: rgba(15, 23, 42, 0.95) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .nav-link {
+            color: #f1f5f9 !important;
+        }
+
+        body.dark-mode .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        body.dark-mode .card-custom,
+        body.dark-mode .project-card,
+        body.dark-mode .contact-form {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .card-title,
+        body.dark-mode .project-title,
+        body.dark-mode .section-title,
+        body.dark-mode .hero-title {
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .card-text,
+        body.dark-mode .project-desc,
+        body.dark-mode .section-subtitle,
+        body.dark-mode .hero-subtitle {
+            color: #94a3b8;
+        }
+
+        body.dark-mode .skill-item {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .project-header {
+            background: rgba(15, 23, 42, 0.6);
+        }
+
+        body.dark-mode .form-control,
+        body.dark-mode .form-select {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #f1f5f9;
+        }
+
+        body.dark-mode .form-control::placeholder {
+            color: #64748b;
+        }
+
+        body.dark-mode .footer {
+            background: rgba(15, 23, 42, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+        }
+
+        body.dark-mode .social-link {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode .hero-badge,
+        body.dark-mode .section-badge {
+            background: rgba(37, 99, 235, 0.2);
+            color: #60a5fa;
+        }
+
+        /* Theme Switch */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-switch {
+            display: inline-block;
+            height: 30px;
+            position: relative;
+            width: 60px;
+        }
+
+        .theme-switch input {
+            display: none;
+        }
+
+        .slider {
+            background-color: #cbd5e1;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            background-color: #ffffff;
+            bottom: 3px;
+            content: "";
+            height: 24px;
+            left: 3px;
+            position: absolute;
+            transition: 0.4s;
+            width: 24px;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        input:checked + .slider {
+            background-color: #2563eb;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+
+        .slider .icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            transition: opacity 0.3s;
+        }
+
+        .slider .sun {
+            left: 8px;
+            opacity: 1;
+        }
+
+        .slider .moon {
+            right: 8px;
+            opacity: 0;
+        }
+
+        input:checked + .slider .sun {
+            opacity: 0;
+        }
+
+        input:checked + .slider .moon {
+            opacity: 1;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary) !important;
+        }
+
+        .nav-link {
+            color: var(--dark) !important;
+            font-weight: 500;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 40px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid white;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 80px rgba(37, 99, 235, 0.2);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #eff6ff;
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .btn-primary-custom {
+            padding: 15px 40px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary-custom:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-outline-custom {
+            padding: 15px 40px;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #eff6ff;
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .card-custom {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.3s ease;
+            height: 100%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .card-custom:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-color: var(--primary);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: #eff6ff;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+
+        .card-text {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Skills */
+        .skill-item {
+            background: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            display: inline-block;
+            margin: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .skill-item:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .skill-item img {
+            border-radius: 10px;
+        }
+
+        /* Projects */
+        .project-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .project-header {
+            padding: 30px;
+            background: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 150px;
+        }
+        .project-icon img {
+            max-width: 100px;
+            max-height: 100px;
+            object-fit: contain;
+        }
+
+        .project-body {
+            padding: 30px;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+
+        .project-desc {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            gap: 12px;
+            color: var(--secondary);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .form-control, .form-select {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            color: var(--dark);
+            padding: 14px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background: white;
+            border-color: var(--primary);
+            color: var(--dark);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .social-link {
+            width: 55px;
+            height: 55px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.2);
+            border-color: var(--primary);
+        }
+
+        .social-link img {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            background: white;
+            border-top: 1px solid var(--border);
+            margin-top: 80px;
+            color: var(--gray);
+        }
+
+        .success-message {
+            display: none;
+            padding: 20px;
+            background: #dcfce7;
+            border: 1px solid #22c55e;
+            color: #16a34a;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                text-align: center;
+            }
+
+            .profile-wrapper {
+                width: 220px;
+                height: 220px;
+            }
+
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <div class="d-flex align-items-center gap-3">
+                <a class="navbar-brand" href="#">TK</a>
+                <!-- Dark Mode Toggle Switch -->
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round">
+                            <span class="icon sun">☀️</span>
+                            <span class="icon moon">🌙</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <div class="profile-wrapper">
+                    <img src="MyProfile.jpeg" alt="Tarun Kumar" class="profile-img">
+                </div>
+                <div class="hero-badge">✨ Available for Opportunities</div>
+                <h1 class="hero-title">Hi, I'm <span class="gradient-text">Tarun Kumar</span></h1>
+                <p class="hero-subtitle">
+                    B.Tech CSE Student | Passionate Full Stack Developer crafting innovative web solutions with modern technologies
+                </p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="#contact" class="btn btn-primary-custom">Get In Touch</a>
+                    <a href="#projects" class="btn btn-outline-custom">View Projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">👨‍💻 Who I Am</div>
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Passionate developer crafting digital experiences that matter</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-custom">
+                        <div class="card-icon">🎓</div>
+                        <h3 class="card-title">Education</h3>
+                        <p class="card-text">B.Tech in Computer Science Engineering from Lamrin Tech Skills University Ropar Punjab, constantly learning and evolving.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-custom">
+                        <div class="card-icon">💡</div>
+                        <h3 class="card-title">Innovation</h3>
+                        <p class="card-text">Creating innovative web applications that solve real-world problems with elegant and efficient solutions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-custom">
+                        <div class="card-icon">🎯</div>
+                        <h3 class="card-title">Dedication</h3>
+                        <p class="card-text">Bringing the same dedication from gym to coding, pushing limits and achieving excellence in every project.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">⚡ My Arsenal</div>
+                <h2 class="section-title">Skills & Technologies</h2>
+                <p class="section-subtitle">Tools I use to bring ideas to life</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="skill-item"><img src="https://media.licdn.com/dms/image/v2/D4D12AQGwAmGL-cLCnA/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1700491886258?e=2147483647&v=beta&t=V_FO-7artu4JpH7YMXD94VROXH5fDuT0Pj6-EHrQbNw" alt="cpp" height="50px"></div>
+                <div class="skill-item"><img src="https://www.smeclabs.net/wp-content/uploads/2023/05/JAVA-Full-Stack-Developer.png" alt="java" height="50px"></div>
+                <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968267.png" alt="html" height="50px"></div>
+                <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968242.png" alt="css" height="50px"></div>
+                <div class="skill-item"><img src="https://cdn3d.iconscout.com/3d/premium/thumb/ui-ux-3d-icon-png-download-11780142.png" alt="uiux" height="50px"></div>
+                <div class="skill-item"><img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBdGJUTfYBgXhsADa1SnJ3QcSnbaQCv2IguQ&s" alt="python" height="50px"></div>
+                <div class="skill-item"><img src="https://cdn.iconscout.com/icon/free/png-256/free-javascript-logo-icon-svg-download-png-1720087.png" alt="js" height="50px"></div>
+                <div class="skill-item"><img src="https://raw.githubusercontent.com/themedotid/bootstrap-icon/HEAD/docs/bootstrap-icon-css.png" alt="bootstrap" height="50px"></div>
+                <div class="skill-item"><img src="https://www.shutterstock.com/shutterstock/photos/1893066034/display_1500/stock-vector-dsa-mean-digital-signature-algorithm-it-security-acronyms-letters-and-icons-vector-illustration-1893066034.jpg" alt="dsa" height="50px"></div>
+                <div class="skill-item"><img src="https://miro.medium.com/1*Z0QJCX3vTZz1g421batDIA.jpeg" alt="github" height="50px"></div>
+                <div class="skill-item"><img src="https://img.freepik.com/premium-vector/blockchain-logo-design_611243-62.jpg?semt=ais_hybrid&w=740&q=80" alt="blockchain" height="50px"></div>
+                <div class="skill-item"><img src="https://media.istockphoto.com/id/1058712430/vector/simple-icon-to-represent-the-internet-of-things-concept-gear-settings-and-network-iot.jpg?s=612x612&w=0&k=20&c=FHm6JFVDYBAx62wBOP60EQUVhepsBjzpaRARLAxvsOM=" alt="iot" height="50px"></div>
+                <div class="skill-item"><img src="https://cdn.vectorstock.com/i/1000v/06/02/teamwork-support-icon-vector-10080602.jpg" alt="teamwork" height="50px"></div>
+                <div class="skill-item"><img src=" https://howwelead.org/wp-content/uploads/2016/08/bigstock-leader-leadership-skill-author-122245793.jpg" alt="leadership" height="50px"></div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Projects Section -->
+       <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">🚀 My Work</div>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">A showcase of my recent work and creative solutions</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwd3m4kzrCulHiBUOzm_0EZLs0g66HkX05ag&s" alt="movie hub" height="80px" width="80px"></div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Movie Hub</h3>
+                            <p class="project-desc">Entertainment platform with intuitive interface for browsing movies and TV shows.</p>
+                            <a href="https://68617ec54215d244b9ea6410--tarun-kumar-moviehub.netlify.app/" target="_blank" class="project-link">
+                                View Live <span>→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFwD6wsvFB8VKZTeFoNxcyxPhhrHP-1nt4ZQ&s" alt="food express" height="80px" width="80px"></div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Food Express</h3>
+                            <p class="project-desc">Food delivery app with restaurant listings and secure payment processing.</p>
+                            <a href="https://foodexpress-fooddeliveryapp.vercel.app/" target="_blank" class="project-link">
+                                Order Now <span>→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+               
+                 <div class="col-lg-4 col-md-6" data-aos="fada-up" data-aos-delay="200">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon"> <img src="https://c8.alamy.com/comp/G2FWK6/drum-kit-icon-G2FWK6.jpg" alt="drum kit" height="80px" width="80px"> </div>
+                </div>
+                    <div class="project-body">
+                    <h3 class="project-title">Drum Kit</h3>
+                    <p class="project-desc">A simple and fun Drum Kit Press keys A, S, D, F, G, H, J, K on your keyboard and also mobile screen to play 8 different drum sounds.</p>
+                    <a href="https://drum-kit-three-tau.vercel.app/" target="_blank" class="project-link">
+                        Play now <span>↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fada-up" data-aos-delay="200">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRie_lxbIM-D21yMA08OhpnGtVsPmc_XxS74A&s" alt="..." height="80px" width="80px"> </div>
+                     </div>
+                    <div class="project-body">
+                    <h3 class="project-title">Indian-Cultural-Heritage</h3>
+                    <p class="project-desc">A clean, simple website highlighting India’s monuments, festivals, arts, and traditions in one visual experience.</p>
+                    <a href="https://indian-cultural-heritage.vercel.app/" target="_blank" class="project-link">
+                       view now <span>↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+         
+        <div class="col-lg-4 col-md-6" data-aos="fada-up" data-aos-delay="200">
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon"> <img src="https://i.pinimg.com/736x/5e/74/ec/5e74ec29fcf66a8b539f3e80a80042b1.jpg" alt="..." height="80px" width="80px"> </div>
+                     </div>
+                    <div class="project-body">
+                    <h3 class="project-title">EcoSmart Pro</h3>
+                    <p class="project-desc">A smart, eco-friendly web solution designed to help users cut electricity waste and improve energy efficiency.</p>
+                    <a href="https://smart-energy-saver-tan.vercel.app/" target="_blank" class="project-link">
+                       view now <span>↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+         
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon"><img src="https://img.freepik.com/premium-psd/3d-futuristic-smart-calculator-icon-with-advanced-ai-technology_653681-5232.jpg" alt="calculator" height="80px" width="80px"></div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">SolveMate AI</h3>
+                            <p class="project-desc">Advanced calculator with modern UI and smooth animations.</p>
+                            <a href="https://ai-calculator-bay.vercel.app/" target="_blank" class="project-link">
+                                Try NOw <span>→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5tKammRppBQaIRxt9v714nGHtVPUH9JQ8pQ&s" alt="project" height="80px" width="80px"></div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">360° VR Experience</h3>
+                            <p class="project-desc">Immersive 360-degree image viewer with advanced JavaScript.</p>
+                            <a href="https://tarun00544.github.io/AR-VR-3D/" target="_blank" class="project-link">
+                                View Live <span>→</span>
+                            </a> <br>
+                            <a href="https://hostel-vr.vercel.app/" target="_blank" class="project-link">
+                        view Live <span>→</span>
+                    </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwyyhb3FPkhzx22mIfmg5b26XmHZwwzeohrWPljoIT30po4bmf9fzqIe95biiitIDGGeo&usqp=CAU" alt="game" height="80px" width="80px"></div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Rock Paper Scissors</h3>
+                            <p class="project-desc">Interactive game with real-time score tracking and animations.</p>
+                            <a href="https://rock-paper-scissors-xi-sage.vercel.app/" target="_blank" class="project-link">
+                                Play Now<span>→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUwXwRZJZhR3USqUT-tfSz0uMACOMaEoU5A&s" alt="portal" height="80px" width="80px"></div>
+                        </div>
+                        <div class="project-body">
+                            <h3 class="project-title">Registration Portal</h3>
+                            <p class="project-desc">Secure authentication system with modern design and data validation.</p>
+                            <a href="https://registration-portal-henna.vercel.app/" target="_blank" class="project-link">
+                                Register Now <span>→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card">
+                         <div class="project-header">
+                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLvpkZCkbs1lW8WUKwLAJPm4dEjXRs90eAjQ&s" alt="atm" height="80px" width="80px"></div>
+                         </div>
+                         <div class="project-body">
+                          <h3 class="project-title">E-commerce Website</h3>
+                          <p class="project-desc">A fully functional e-commerce website with product listing, shopping cart, and secure checkout process.</p>
+                          <a href=" https://lnt-project1.vercel.app/" target="_blank" class="project-link">
+                           View Store <span>↗</span>
+                          </a>
+                    </div>
+                 </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-card">
+                       <div class="project-header">
+                          <div class="project-icon"><img src=" https://www.creativefabrica.com/wp-content/uploads/2022/07/29/Occupation-business-portfolio-icon-Graphics-35104847-1.jpg" alt="account" height="80px" width="80px"></div>
+                            </div>
+                            <div class="project-body">
+                            <h3 class="project-title">Developer Portfolio</h3>
+                            <p class="project-desc">A modern developer portfolio showcasing projects, skills, and experience.</p>
+                            <a href=" https://lnt-project2.vercel.app/" target="_blank"  class="project-link">
+                           View Portfolio<span>↗</span>
+                        </a>
+                     </div>
+                 </div>
+            </div>
+
+    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+      <div class="project-card">
+           <div class="project-header">
+               <div class="project-icon"><img src="https://cdn-icons-png.flaticon.com/512/3966/3966442.png" alt="login page" height="80px" width="80px"></div>
+                </div>
+                  <div class="project-body">
+                   <h3 class="project-title">Login page</h3>
+                   <p class="project-desc">A sleek login page with modern design, featuring email and password fields, remember me option, and links for password recovery and sign-up. <br>
+                    email: "tarunkumar894186@gmail.com", <br>
+                     password: "Tarun@1230"</p>
+                  <a href="https://loginpage-web-wine.vercel.app/" target="_blank" class="project-link">
+                    Login Now  <span>↗</span>
+                 </a>
+            </div>
+          </div>
+       </div>
+
+    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card">
+            <div class="project-header">
+                <div class="project-icon"><img src="https://cdn-icons-png.flaticon.com/512/7840/7840459.png" alt="resume" height="80px" width="80px"></div>
+                 </div>
+                     <div class="project-body">
+                         <h3 class="project-title">My Resume</h3>
+                         <p class="project-desc">A comprehensive resume showcasing my skills, projects, and experiences in a professional format.</p>
+                       <a href="Tarun-Resume.pdf" target="_blank" class="project-link">
+                       Visit Now <span>↗</span>
+                     </a>
+                </div>
+            </div>
+        </div>
+     </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <div class="section-badge">📧 Let's Connect</div>
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Have a project in mind? Let's build something amazing together!</p>
+            </div>
+            
+            <div class="contact-form" data-aos="fade-up" data-aos-delay="100">
+                <form id="contactForm" method="POST" action="https://api.web3forms.com/submit">
+                    <input type="hidden" name="access_key" value="ab2ce0a3-47a1-46ce-a35a-7212fe5d732d">
+
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Your Name *" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email *" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone Number *" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject *" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <textarea class="form-control" name="message" id="message" placeholder="Your Message *" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary-custom w-100">Send Message</button>
+
+                    <div class="success-message" id="successMessage">
+                        <h5>✅ Message Sent Successfully!</h5>
+                        <p>Thank you for reaching out. I'll get back to you soon!</p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Social Links -->
+            <div class="social-links" data-aos="fade-up" data-aos-delay="200">
+                <a href="mailto:tarunsingh925954@gmail.com" class="social-link" title="Email">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRajSNqOc_VpaTpQIMTp-0nSOnPJ1f7PZZ1sw&s" alt="email">
+                </a>
+                <a href="https://www.linkedin.com/in/tarun-kumar-ba7941296" target="_blank" class="social-link" title="LinkedIn">
+                    <img src="https://images.seeklogo.com/logo-png/24/1/linkedin-icon-logo-png_seeklogo-249364.png" alt="linkedin">
+                </a>
+                <a href="https://github.com/tarun005444" target="_blank" class="social-link" title="GitHub">
+                    <img src="https://cdn-icons-png.flaticon.com/256/25/25231.png" alt="github">
+                </a>
+                <a href="https://www.instagram.com/__tarun__singh00/" target="_blank" class="social-link" title="Instagram">
+                    <img src="https://img.freepik.com/premium-psd/instagram-logo-social-media-icon_705838-13489.jpg" alt="instagram">
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=100055484945053" target="_blank" class="social-link" title="Facebook">
+                    <img src="https://image.similarpng.com/file/similarpng/very-thumbnail/2020/04/Popular-Logo-facebook-icon-png.png" alt="facebook">
+                </a>
+                <a href="https://www.youtube.com/@TarunBhakti00" target="_blank" class="social-link" title="YouTube">
+                    <img src="https://similarpng.com/_next/image?url=https%3A%2F%2Fimage.similarpng.com%2Ffile%2Fsimilarpng%2Fvery-thumbnail%2F2020%2F04%2FYouTube-logo-glossy-social-media-png.png&w=3840&q=75" alt="youtube">
+                </a>
+                <a href="https://web.telegram.org/k/" target="_blank" class="social-link" title="Telegram">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/016/716/472/small/telegram-icon-free-png.png" alt="telegram">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">© 2025 Tarun Kumar. Designed with ❤️ and built with modern web technologies.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+
+        // Dark Mode Toggle
+        const toggleSwitch = document.querySelector('#checkbox');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme) {
+            document.body.classList.add(currentTheme);
+            if (currentTheme === 'dark-mode') {
+                toggleSwitch.checked = true;
+            }
+        }
+
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light-mode');
+            }
+        }
+
+        toggleSwitch.addEventListener('change', switchTheme, false);
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                        const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                        bsCollapse.hide();
+                    }
+                }
+            });
+        });
+
+        // Contact Form Handling
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const form = event.target;
+
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    document.getElementById('successMessage').classList.add('show');
+                    form.reset();
+                    setTimeout(() => {
+                        document.getElementById('successMessage').classList.remove('show');
+                    }, 5000);
+                } else {
+                    alert("❌ Error sending message. Please try again.");
+                }
+            })
+            .catch(() => {
+                alert("❌ Something went wrong!");
+            });
+        });
+
+        console.log('🚀 Portfolio loaded successfully!');
+        console.log('👨‍💻 Developed by Tarun Kumar');
+    </script>
+</body>
+</html>
