@@ -1,435 +1,292 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full Stack Developer Profile</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="Portfolio.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarun Kumar | Full Stack Developer</title>
+<meta name="description" content="Tarun Kumar — B.Tech CSE student and Full Stack Developer building web, MERN-stack and AR/VR projects.">
+<link rel="stylesheet" href="Portfolio.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-            <div class="d-flex align-items-center gap-3">
-                <a class="navbar-brand" href="#">TK</a>
-                <!-- Dark Mode Toggle Switch -->
-                <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" />
-                        <div class="slider round">
-                            <span class="icon sun">☀️</span>
-                            <span class="icon moon">🌙</span>
-                        </div>
-                    </label>
-                </div>
-            </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-            </div>
+<a href="#mainContent" class="skip-link">Skip to main content</a>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="site-nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="#home" class="brand" data-route="home"><span>Tarun</span><span class="brand-dot">.</span>Kumar</a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" data-route="home">Home</a></li>
+      <li><a href="#about" data-route="about">About</a></li>
+      <li><a href="#skills" data-route="skills">Skills</a></li>
+      <li><a href="#projects" data-route="projects">Projects</a></li>
+      <li><a href="#experience" data-route="experience">Experience</a></li>
+      <li><a href="#resume" data-route="resume">Resume</a></li>
+      <li><a href="#contact" data-route="contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="search-trigger" data-search-open type="button" aria-label="Search portfolio (Ctrl+K)">
+        <span aria-hidden="true">🔍</span>
+        <span class="search-label">Search</span>
+        <span class="search-kbd" aria-hidden="true">⌘K</span>
+      </button>
+      <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle dark mode">🌙</button>
+      <button class="icon-btn nav-toggle" id="navToggleBtn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+    </div>
+  </div>
+</nav>
+
+<main id="mainContent" class="page-shell">
+
+  <!-- ============ HOME ============ -->
+  <section class="view" data-page="home">
+    <div class="hero">
+      <div class="profile-wrap">
+        <img src="MyProfile.jpeg" alt="Portrait of Tarun Kumar" class="profile-img">
+      </div>
+      <div class="hero-badge"><span class="dot"></span> Available for opportunities</div>
+      <h1 class="hero-title">Hi, I'm <span class="accent">Tarun Kumar</span></h1>
+      <p class="role-line mono">&gt; <span id="roleText"></span><span class="cursor">|</span></p>
+      <p class="hero-sub">B.Tech CSE student and passionate Full Stack Developer crafting innovative web solutions with modern technologies — from interactive UIs to full MERN-stack apps and AR/VR experiences.</p>
+      <div class="hero-actions">
+        <a href="#resume" class="btn btn-primary" data-route="resume">View Resume</a>
+        <a href="#projects" class="btn btn-outline" data-route="projects">View Projects</a>
+      </div>
+      <div class="hero-social" aria-label="Social links">
+        <a class="social-link" href="https://github.com/tarun005444" target="_blank" rel="noopener" title="GitHub">
+          <img src="https://cdn-icons-png.flaticon.com/256/25/25231.png" alt="GitHub" loading="lazy">
+        </a>
+        <a class="social-link" href="https://www.linkedin.com/in/tarun-kumar-ba7941296" target="_blank" rel="noopener" title="LinkedIn">
+          <img src="https://images.seeklogo.com/logo-png/24/1/linkedin-icon-logo-png_seeklogo-249364.png" alt="LinkedIn" loading="lazy">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="view" data-page="about">
+    <div class="section">
+      <div class="section-head">
+        <span class="eyebrow">Who I Am</span>
+        <h2 class="section-title">About Me</h2>
+        <p class="section-sub">Passionate developer crafting digital experiences that matter.</p>
+      </div>
+
+      <p class="about-lead" id="aboutIntro"></p>
+
+      <div class="card-grid" id="aboutCards"></div>
+
+      <div class="goal-banner" id="aboutGoal"></div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="view" data-page="skills">
+    <div class="section">
+      <div class="section-head">
+        <span class="eyebrow">My Arsenal</span>
+        <h2 class="section-title">Skills &amp; Technologies</h2>
+        <p class="section-sub">Organized by category — search or filter to find something specific.</p>
+      </div>
+
+      <div class="local-search">
+        <label for="skillSearch" class="visually-hidden">Search skills</label>
+        <input type="search" id="skillSearch" placeholder="Search skills — e.g. React, MongoDB, Git…" autocomplete="off">
+        <button class="clear-btn" id="skillSearchClear" type="button" aria-label="Clear skill search">✕</button>
+      </div>
+
+      <div class="filter-bar" id="skillFilters" role="group" aria-label="Filter skills by category"></div>
+
+      <div id="skillsContainer"></div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="view" data-page="projects">
+    <div class="section">
+      <div class="section-head">
+        <span class="eyebrow">My Work</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-sub">A showcase of recent work — filter by category or search by technology.</p>
+      </div>
+
+      <div class="local-search">
+        <label for="projectSearch" class="visually-hidden">Search projects</label>
+        <input type="search" id="projectSearch" placeholder="Search projects — e.g. MongoDB, VR, authentication…" autocomplete="off">
+        <button class="clear-btn" id="projectSearchClear" type="button" aria-label="Clear project search">✕</button>
+      </div>
+
+      <div class="filter-bar" id="projectFilters" role="group" aria-label="Filter projects by category"></div>
+      <p class="result-count" id="projectResultCount"></p>
+
+      <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE / EDUCATION ============ -->
+  <section class="view" data-page="experience">
+    <div class="section">
+      <div class="section-head">
+        <span class="eyebrow">Journey So Far</span>
+        <h2 class="section-title">Experience &amp; Education</h2>
+        <p class="section-sub">My academic background and hands-on, project-based experience.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3 id="eduDegree"></h3>
+          <span class="meta" id="eduSchool"></span>
+          <p id="eduNote"></p>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content" data-aos="fade-up">
-                <div class="profile-wrapper">
-                    <img src="MyProfile.jpeg" alt="Tarun Kumar" class="profile-img">
-                </div>
-                <div class="hero-badge">✨ Available for Opportunities</div>
-                <h1 class="hero-title">Hi, I'm <span class="gradient-text">Tarun Kumar</span></h1>
-                <p class="hero-subtitle">
-                    B.Tech CSE Student | Passionate Full Stack Developer crafting innovative web solutions with modern technologies
-                </p>
-                <div class="d-flex gap-3 justify-content-center flex-wrap">
-                    <a href="#contact" class="btn btn-primary-custom">Get In Touch</a>
-                    <a href="#projects" class="btn btn-outline-custom">View Projects</a>
-                </div>
-            </div>
+        <div class="timeline-item">
+          <h3>Independent Project-Based Development</h3>
+          <span class="meta">Ongoing</span>
+          <p>Built and shipped a range of frontend, backend, MERN-stack, and AR/VR projects — see the <a href="#projects" data-route="projects">Projects</a> page for the full list, each with live links.</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <section class="section" id="about">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <div class="section-badge">👨‍💻 Who I Am</div>
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Passionate developer crafting digital experiences that matter</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-custom">
-                        <div class="card-icon">🎓</div>
-                        <h3 class="card-title">Education</h3>
-                        <p class="card-text">B.Tech in Computer Science Engineering from Lamrin Tech Skills University Ropar Punjab, constantly learning and evolving.</p>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-custom">
-                        <div class="card-icon">💡</div>
-                        <h3 class="card-title">Innovation</h3>
-                        <p class="card-text">Creating innovative web applications that solve real-world problems with elegant and efficient solutions.</p>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-custom">
-                        <div class="card-icon">🎯</div>
-                        <h3 class="card-title">Dedication</h3>
-                        <p class="card-text">Bringing the same dedication from gym to coding, pushing limits and achieving excellence in every project.</p>
-                    </div>
-                </div>
-            </div>
+  <!-- ============ RESUME ============ -->
+  <section class="view" data-page="resume">
+    <div class="section">
+      <div class="section-head">
+        <span class="eyebrow">Get My Resume</span>
+        <h2 class="section-title">Resume</h2>
+        <p class="section-sub">A comprehensive summary of my skills, projects, and experience.</p>
+      </div>
+
+      <div class="resume-card">
+        <div class="resume-icon">📄</div>
+        <h3>Tarun Kumar — Resume</h3>
+        <p style="color:var(--ink-soft)">PDF format · Full Stack Developer</p>
+        <div class="resume-actions">
+          <a class="btn btn-primary" href="Tarun-Resume.pdf" target="_blank" rel="noopener">View Resume</a>
+          <a class="btn btn-outline" href="Tarun-Resume.pdf" download="Tarun-Resume.pdf">Download Resume</a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-     <!-- Skills Section -->
-    <section class="section" id="skills">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <div class="section-badge">⚡ My Arsenal</div>
-                <h2 class="section-title">Skills & Technologies</h2>
-                <p class="section-subtitle">Tools I use to bring ideas to life</p>
-            </div>
-            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-                <div class="skill-item"><img src="https://media.licdn.com/dms/image/v2/D4D12AQGwAmGL-cLCnA/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1700491886258?e=2147483647&v=beta&t=V_FO-7artu4JpH7YMXD94VROXH5fDuT0Pj6-EHrQbNw" alt="cpp" height="50px"></div>
-                <div class="skill-item"><img src="https://www.smeclabs.net/wp-content/uploads/2023/05/JAVA-Full-Stack-Developer.png" alt="java" height="50px"></div>
-                <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968267.png" alt="html" height="50px"></div>
-                <div class="skill-item"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968242.png" alt="css" height="50px"></div>
-                <div class="skill-item"><img src="https://cdn3d.iconscout.com/3d/premium/thumb/ui-ux-3d-icon-png-download-11780142.png" alt="uiux" height="50px"></div>
-                <div class="skill-item"><img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBdGJUTfYBgXhsADa1SnJ3QcSnbaQCv2IguQ&s" alt="python" height="50px"></div>
-                <div class="skill-item"><img src="https://cdn.iconscout.com/icon/free/png-256/free-javascript-logo-icon-svg-download-png-1720087.png" alt="js" height="50px"></div>
-                <div class="skill-item"><img src="https://raw.githubusercontent.com/themedotid/bootstrap-icon/HEAD/docs/bootstrap-icon-css.png" alt="bootstrap" height="50px"></div>
-                <div class="skill-item"><img src="" alt=""></div>
-                <div class="skill-item"><img src="https://www.shutterstock.com/shutterstock/photos/1893066034/display_1500/stock-vector-dsa-mean-digital-signature-algorithm-it-security-acronyms-letters-and-icons-vector-illustration-1893066034.jpg" alt="dsa" height="50px"></div>
-                <div class="skill-item"><img src="https://miro.medium.com/1*Z0QJCX3vTZz1g421batDIA.jpeg" alt="github" height="50px"></div>
-                <div class="skill-item"><img src="https://img.freepik.com/premium-vector/blockchain-logo-design_611243-62.jpg?semt=ais_hybrid&w=740&q=80" alt="blockchain" height="50px"></div>
-                <div class="skill-item"><img src="https://media.istockphoto.com/id/1058712430/vector/simple-icon-to-represent-the-internet-of-things-concept-gear-settings-and-network-iot.jpg?s=612x612&w=0&k=20&c=FHm6JFVDYBAx62wBOP60EQUVhepsBjzpaRARLAxvsOM=" alt="iot" height="50px"></div>
-                <div class="skill-item"><img src="https://cdn.vectorstock.com/i/1000v/06/02/teamwork-support-icon-vector-10080602.jpg" alt="teamwork" height="50px"></div>
-                <div class="skill-item"><img src=" https://howwelead.org/wp-content/uploads/2016/08/bigstock-leader-leadership-skill-author-122245793.jpg" alt="leadership" height="50px"></div>
-            </div>
-        </div>
-    </section>
+  <!-- ============ CONTACT ============ -->
+  <section class="view" data-page="contact">
+    <div class="section">
+      <div class="section-head">
+        <span class="eyebrow">Let's Connect</span>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-sub">Have a project in mind? Let's build something amazing together!</p>
+      </div>
 
+      <div class="contact-grid">
+        <div class="contact-form-card">
+          <form id="contactForm" method="POST" action="https://api.web3forms.com/submit" novalidate>
+            <input type="hidden" name="access_key" value="ab2ce0a3-47a1-46ce-a35a-7212fe5d732d">
 
-    <!-- Projects Section -->
-       <!-- Projects Section -->
-    <section class="section" id="projects">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <div class="section-badge">🚀 My Work</div>
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">A showcase of my recent work and creative solutions</p>
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" name="name" id="name" placeholder="Your name" required>
+              <p class="field-error">Please enter your name.</p>
             </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwd3m4kzrCulHiBUOzm_0EZLs0g66HkX05ag&s" alt="movie hub" height="80px" width="80px"></div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">Movie Hub</h3>
-                            <p class="project-desc">Entertainment platform with intuitive interface for browsing movies and TV shows.</p>
-                            <a href="https://68617ec54215d244b9ea6410--tarun-kumar-moviehub.netlify.app/" target="_blank" class="project-link">
-                                View Live <span>→</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" placeholder="you@example.com" required>
+              <p class="field-error">Please enter a valid email address.</p>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input type="tel" name="phone" id="phone" placeholder="Your phone number" required>
+              <p class="field-error">Please enter a valid phone number.</p>
+            </div>
+            <div class="field">
+              <label for="subject">Subject</label>
+              <input type="text" name="subject" id="subject" placeholder="What's this about?" required>
+              <p class="field-error">Please enter a subject.</p>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea name="message" id="message" placeholder="Tell me about your project…" required></textarea>
+              <p class="field-error">Message should be at least 10 characters.</p>
+            </div>
 
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFwD6wsvFB8VKZTeFoNxcyxPhhrHP-1nt4ZQ&s" alt="food express" height="80px" width="80px"></div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">Food Express</h3>
-                            <p class="project-desc">Food delivery app with restaurant listings and secure payment processing.</p>
-                            <a href="https://foodexpress-fooddeliveryapp.vercel.app/" target="_blank" class="project-link">
-                                Order Now <span>→</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-               
-                 <div class="col-lg-4 col-md-6" data-aos="fada-up" data-aos-delay="200">
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-icon"> <img src="https://c8.alamy.com/comp/G2FWK6/drum-kit-icon-G2FWK6.jpg" alt="drum kit" height="80px" width="80px"> </div>
-                </div>
-                    <div class="project-body">
-                    <h3 class="project-title">Drum Kit</h3>
-                    <p class="project-desc">A simple and fun Drum Kit Press keys A, S, D, F, G, H, J, K on your keyboard and also mobile screen to play 8 different drum sounds.</p>
-                    <a href="https://drum-kit-three-tau.vercel.app/" target="_blank" class="project-link">
-                        Play now <span>↗</span>
-                    </a>
-                </div>
-            </div>
+            <button type="submit" class="btn btn-primary" id="contactSubmitBtn" style="width:100%; justify-content:center;">Send Message</button>
+            <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+          </form>
         </div>
 
-          <div class="col-lg-4 col-md-6" data-aos="fada-up" data-aos-delay="200">
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-icon"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRie_lxbIM-D21yMA08OhpnGtVsPmc_XxS74A&s" alt="..." height="80px" width="80px"> </div>
-                     </div>
-                    <div class="project-body">
-                    <h3 class="project-title">Indian-Cultural-Heritage</h3>
-                    <p class="project-desc">A clean, simple website highlighting India’s monuments, festivals, arts, and traditions in one visual experience.</p>
-                    <a href="https://indian-cultural-heritage.vercel.app/" target="_blank" class="project-link">
-                       view now <span>↗</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-         
-        <div class="col-lg-4 col-md-6" data-aos="fada-up" data-aos-delay="200">
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-icon"> <img src="https://i.pinimg.com/736x/5e/74/ec/5e74ec29fcf66a8b539f3e80a80042b1.jpg" alt="..." height="80px" width="80px"> </div>
-                     </div>
-                    <div class="project-body">
-                    <h3 class="project-title">EcoSmart Pro</h3>
-                    <p class="project-desc">A smart, eco-friendly web solution designed to help users cut electricity waste and improve energy efficiency.</p>
-                    <a href="https://smart-energy-saver-tan.vercel.app/" target="_blank" class="project-link">
-                       view now <span>↗</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-         
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon"><img src="https://img.freepik.com/premium-psd/3d-futuristic-smart-calculator-icon-with-advanced-ai-technology_653681-5232.jpg" alt="calculator" height="80px" width="80px"></div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">SolveMate AI</h3>
-                            <p class="project-desc">Advanced calculator with modern UI and smooth animations.</p>
-                            <a href="https://ai-calculator-bay.vercel.app/" target="_blank" class="project-link">
-                                Try NOw <span>→</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5tKammRppBQaIRxt9v714nGHtVPUH9JQ8pQ&s" alt="project" height="80px" width="80px"></div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">360° VR Experience</h3>
-                            <p class="project-desc">Immersive 360-degree image viewer with advanced JavaScript.</p>
-                            <a href="https://tarun00544.github.io/AR-VR-3D/" target="_blank" class="project-link">
-                                College View Live <span>→</span>
-                            </a> <br>
-                            <a href="https://hostel-vr.vercel.app/" target="_blank" class="project-link">
-                               Hostel view Live <span>→</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwyyhb3FPkhzx22mIfmg5b26XmHZwwzeohrWPljoIT30po4bmf9fzqIe95biiitIDGGeo&usqp=CAU" alt="game" height="80px" width="80px"></div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">Rock Paper Scissors</h3>
-                            <p class="project-desc">Interactive game with real-time score tracking and animations.</p>
-                            <a href="https://rock-paper-scissors-xi-sage.vercel.app/" target="_blank" class="project-link">
-                                Play Now<span>→</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUwXwRZJZhR3USqUT-tfSz0uMACOMaEoU5A&s" alt="portal" height="80px" width="80px"></div>
-                        </div>
-                        <div class="project-body">
-                            <h3 class="project-title">Registration Portal</h3>
-                            <p class="project-desc">Secure authentication system with modern design and data validation.</p>
-                            <a href="https://registration-portal-henna.vercel.app/" target="_blank" class="project-link">
-                                Register Now <span>→</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-card">
-                         <div class="project-header">
-                            <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLvpkZCkbs1lW8WUKwLAJPm4dEjXRs90eAjQ&s" alt="atm" height="80px" width="80px"></div>
-                         </div>
-                         <div class="project-body">
-                          <h3 class="project-title">E-commerce Website</h3>
-                          <p class="project-desc">A fully functional e-commerce website with product listing, shopping cart, and secure checkout process.</p>
-                          <a href=" https://lnt-project1.vercel.app/" target="_blank" class="project-link">
-                           View Store <span>↗</span>
-                          </a>
-                    </div>
-                 </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-card">
-                       <div class="project-header">
-                          <div class="project-icon"><img src=" https://www.creativefabrica.com/wp-content/uploads/2022/07/29/Occupation-business-portfolio-icon-Graphics-35104847-1.jpg" alt="account" height="80px" width="80px"></div>
-                            </div>
-                            <div class="project-body">
-                            <h3 class="project-title">Developer Portfolio</h3>
-                            <p class="project-desc">A modern developer portfolio showcasing projects, skills, and experience.</p>
-                            <a href=" https://lnt-project2.vercel.app/" target="_blank"  class="project-link">
-                           View Portfolio<span>↗</span>
-                        </a>
-                     </div>
-                 </div>
-            </div>
-
-    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-      <div class="project-card">
-           <div class="project-header">
-               <div class="project-icon"><img src="https://cdn-icons-png.flaticon.com/512/3966/3966442.png" alt="login page" height="80px" width="80px"></div>
-                </div>
-                  <div class="project-body">
-                   <h3 class="project-title">Login page</h3>
-                   <p class="project-desc">A sleek login page with modern design, featuring email and password fields, remember me option, and links for password recovery and sign-up. <br>
-                    email: "tarunkumar894186@gmail.com", <br>
-                     password: "Tarun@1230"</p>
-                  <a href="https://loginpage-web-wine.vercel.app/" target="_blank" class="project-link">
-                    Login Now  <span>↗</span>
-                 </a>
-            </div>
+        <div class="contact-side">
+          <div class="info-card">
+            <span class="glyph">📍</span>
+            <h3>Let's talk</h3>
+            <p>Whether it's a full-stack build, a frontend challenge, or an AR/VR idea — I'd love to hear about it.</p>
           </div>
-       </div>
-
-    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="project-card">
-            <div class="project-header">
-                <div class="project-icon"><img src="https://cdn-icons-png.flaticon.com/512/7840/7840459.png" alt="resume" height="80px" width="80px"></div>
-                 </div>
-                     <div class="project-body">
-                         <h3 class="project-title">My Resume</h3>
-                         <p class="project-desc">A comprehensive resume showcasing my skills, projects, and experiences in a professional format.</p>
-                       <a href="Tarun-Resume.pdf" target="_blank" class="project-link">
-                       Visit Now <span>↗</span>
-                     </a>
-                </div>
-            </div>
+          <div>
+            <h3 style="margin-bottom:14px;">Find me elsewhere</h3>
+            <div class="social-grid" id="socialGrid"></div>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="project-card">
-            <div class="project-header">
-                <div class="project-icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTSkoJrwQ-r35djtF9AofYM-q-uVCJuApqdQ&s" alt="warehouse-managment" height="80px" width="80px"></div>
-                 </div>
-                     <div class="project-body">
-                         <h3 class="project-title">Warehousemanagment</h3>
-                         <p class="project-desc">A cloud-based Warehouse Management System for inventory tracking, supplier management, stock monitoring, purchase & sales management, analytics dashboard, and real-time cloud database integration.</p>
-                       <a href="https://warehousemanagement-with-web.onrender.com/" target="_blank" class="project-link">
-                       View Project <span>↗</span>
-                     </a>
-                </div>
-            </div>
-        </div>
-     </div>
+</main>
 
-    </section>
-    <!-- Contact Section -->
-    <section class="section" id="contact">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <div class="section-badge">📧 Let's Connect</div>
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Have a project in mind? Let's build something amazing together!</p>
-            </div>
-            
-            <div class="contact-form" data-aos="fade-up" data-aos-delay="100">
-                <form id="contactForm" method="POST" action="https://api.web3forms.com/submit">
-                    <input type="hidden" name="access_key" value="ab2ce0a3-47a1-46ce-a35a-7212fe5d732d">
+<footer class="site-footer">
+  <p>© 2025 Tarun Kumar. Designed with ❤️ and built with modern web technologies.</p>
+</footer>
 
-                    <div class="mb-3">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Your Name *" required>
-                    </div>
+<!-- ============ PROJECT DETAILS MODAL ============ -->
+<div class="modal-overlay" id="projectModalOverlay" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="projectModalTitle">Project</h3>
+      <button class="modal-close" id="projectModalClose" aria-label="Close project details">✕</button>
+    </div>
+    <div class="modal-content" id="projectModalBody"></div>
+  </div>
+</div>
 
-                    <div class="mb-3">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email *" required>
-                    </div>
+<!-- ============ GLOBAL SEARCH PALETTE ============ -->
+<div class="modal-overlay search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search portfolio">
+  <div class="modal-box search-box">
+    <div class="search-input-row">
+      <span class="glyph" aria-hidden="true">🔍</span>
+      <label for="globalSearchInput" class="visually-hidden">Search the whole portfolio</label>
+      <input type="search" id="globalSearchInput" placeholder="Search projects, skills, about, experience…" autocomplete="off">
+      <button class="clear-btn" id="searchClearBtn" type="button" aria-label="Clear search">✕</button>
+      <span class="search-esc" aria-hidden="true">ESC</span>
+    </div>
+    <div class="search-results" id="searchResults" role="listbox"></div>
+  </div>
+</div>
 
-                    <div class="mb-3">
-                        <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone Number *" required>
-                    </div>
+<script src="data.js"></script>
+<script src="Portfolio.js"></script>
+<script>
+  // Populate content that comes straight from data.js
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof ABOUT_CONTENT !== "undefined") {
+      document.getElementById("aboutIntro").textContent = ABOUT_CONTENT.intro;
+      document.getElementById("aboutGoal").textContent = ABOUT_CONTENT.goal;
+      document.getElementById("eduDegree").textContent = ABOUT_CONTENT.education.degree;
+      document.getElementById("eduSchool").textContent = ABOUT_CONTENT.education.school;
+      document.getElementById("eduNote").textContent = ABOUT_CONTENT.education.note;
 
-                    <div class="mb-3">
-                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject *" required>
-                    </div>
+      var cardsHtml = [
+        '<div class="info-card"><span class="glyph">🎓</span><h3>Education</h3><p>' + ABOUT_CONTENT.education.degree + ' — ' + ABOUT_CONTENT.education.school + '. ' + ABOUT_CONTENT.education.note + '</p></div>'
+      ];
+      ABOUT_CONTENT.strengths.forEach(function (s) {
+        cardsHtml.push('<div class="info-card"><span class="glyph">' + s.icon + '</span><h3>' + s.title + '</h3><p>' + s.text + '</p></div>');
+      });
+      document.getElementById("aboutCards").innerHTML = cardsHtml.join("");
+    }
 
-                    <div class="mb-3">
-                        <textarea class="form-control" name="message" id="message" placeholder="Your Message *" required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary-custom w-100">Send Message</button>
-
-                    <div class="success-message" id="successMessage">
-                        <h5>✅ Message Sent Successfully!</h5>
-                        <p>Thank you for reaching out. I'll get back to you soon!</p>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Social Links -->
-            <div class="social-links" data-aos="fade-up" data-aos-delay="200">
-                <a href="mailto:tarunsingh925954@gmail.com" class="social-link" title="Email">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRajSNqOc_VpaTpQIMTp-0nSOnPJ1f7PZZ1sw&s" alt="email">
-                </a>
-                <a href="https://www.linkedin.com/in/tarun-kumar-ba7941296" target="_blank" class="social-link" title="LinkedIn">
-                    <img src="https://images.seeklogo.com/logo-png/24/1/linkedin-icon-logo-png_seeklogo-249364.png" alt="linkedin">
-                </a>
-                <a href="https://github.com/tarun005444" target="_blank" class="social-link" title="GitHub">
-                    <img src="https://cdn-icons-png.flaticon.com/256/25/25231.png" alt="github">
-                </a>
-                <a href="https://www.instagram.com/__tarun__singh00/" target="_blank" class="social-link" title="Instagram">
-                    <img src="https://img.freepik.com/premium-psd/instagram-logo-social-media-icon_705838-13489.jpg" alt="instagram">
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=100055484945053" target="_blank" class="social-link" title="Facebook">
-                    <img src="https://image.similarpng.com/file/similarpng/very-thumbnail/2020/04/Popular-Logo-facebook-icon-png.png" alt="facebook">
-                </a>
-                <a href="https://www.youtube.com/@TarunBhakti00" target="_blank" class="social-link" title="YouTube">
-                    <img src="https://similarpng.com/_next/image?url=https%3A%2F%2Fimage.similarpng.com%2Ffile%2Fsimilarpng%2Fvery-thumbnail%2F2020%2F04%2FYouTube-logo-glossy-social-media-png.png&w=3840&q=75" alt="youtube">
-                </a>
-                <a href="https://web.telegram.org/k/" target="_blank" class="social-link" title="Telegram">
-                    <img src="https://static.vecteezy.com/system/resources/thumbnails/016/716/472/small/telegram-icon-free-png.png" alt="telegram">
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p class="mb-0">© 2025 Tarun Kumar. Designed with ❤️ and built with modern web technologies.</p>
-        </div>
-    </footer>
-    <script src="Portfolio.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-     
-    
+    if (typeof SOCIAL_LINKS !== "undefined") {
+      document.getElementById("socialGrid").innerHTML = SOCIAL_LINKS.map(function (s) {
+        return '<a class="social-link" href="' + s.url + '" target="_blank" rel="noopener" title="' + s.label + '"><img src="' + s.icon + '" alt="' + s.label + '" loading="lazy"></a>';
+      }).join("");
+    }
+  });
+</script>
 </body>
 </html>
