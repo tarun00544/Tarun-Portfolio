@@ -64,6 +64,21 @@ const PROJECT_CATEGORIES = ["All", "Frontend", "Backend", "MERN", "AR/VR"];
   links: { demo, secondary } — only real links that existed in the original site
 */
 const PROJECTS = [
+
+     {
+  id: "campus-guardian",
+  title: "Campus Guardian",
+  category: "MERN",
+  tech: ["MERN Stack", "Authentication", "Responsive Design", "Campus Safety"],
+  icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKm1n82PoHCXp8ChgZTFyhHKAXIjSCpoqxsksGbZYXGA&s=10",
+  description: "Campus Guardian is a full-stack MERN campus safety platform that connects students, faculty, staff, and administrators through a centralized digital support system. It enables campus issue reporting, emergency management, real-time notifications, and lost-and-found services, helping institutions streamline incident response and improve campus safety and communication.",
+  links: [
+    {
+      label: "View Campus Guardian",
+      url: "https://frontend-x8w1.vercel.app/"
+  }
+  ]
+  },
    {
 id: "news-website",
 title: "JANAMAT YUG Digital News Platform",
